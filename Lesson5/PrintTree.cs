@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ALesson5_Test
+namespace Lesson5
 {
     public static class PrintTree
     {

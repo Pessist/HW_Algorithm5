@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ALesson5_Test
+namespace Lesson5
 {
 
-    public class MyBinaryTree
+    public class MyBinaryTree : ITree
     {
         private TreeNode root;
 
@@ -16,7 +16,7 @@ namespace ALesson5_Test
             CallBFS(root);
         }
 
-        public void CallBFS(TreeNode root)
+        public static void CallBFS(TreeNode root)
         {
             Queue<TreeNode> queue = new Queue<TreeNode>();
             queue.Enqueue(root);
@@ -25,7 +25,7 @@ namespace ALesson5_Test
             while (queue.Any())
             {
                 TreeNode node = queue.Dequeue();
-                Console.Write($"{step} -> {node.Value}\t");
+                Console.Write($"№{step} -> ({node.Value}), ");
 
                 if (node.LeftChild != null)
                 {
@@ -36,7 +36,6 @@ namespace ALesson5_Test
                     queue.Enqueue(node.RightChild);
                 }
                 step++;
-
             }
         }
 
@@ -45,7 +44,7 @@ namespace ALesson5_Test
             CallDFS(root);
         }
 
-        public void CallDFS(TreeNode root)
+        public static void CallDFS(TreeNode root)
         {
             Stack<TreeNode> stack = new Stack<TreeNode>();
             stack.Push(root);
@@ -54,7 +53,7 @@ namespace ALesson5_Test
             while (stack.Count != 0)
             {
                 TreeNode node = stack.Pop();
-                Console.Write($"{step} -> {node.Value}\t");
+                Console.Write($"№{step} -> ({node.Value}), ");
 
                 if (node.RightChild != null)
                 {
@@ -134,34 +133,9 @@ namespace ALesson5_Test
 
         public TreeNode GetRoot() => root;
 
-       // public TreeNode Root { get { return root; } }
-
         public void PrintTree()
         {
             root.Print();
-        }
-
-        public static int SumDeep(TreeNode root)
-        {
-            Stack<TreeNode> stack = new Stack<TreeNode>();
-            stack.Push(root);
-
-            int sum = 0;
-            while (stack != null)
-            {
-                TreeNode node = stack.Pop();
-                Console.WriteLine(node.Value);
-                sum += node.Value;
-                if (node.RightChild != null)
-                {
-                    stack.Push(node.RightChild);
-                }
-                if (node.LeftChild != null)
-                {
-                    stack.Push(node.LeftChild);
-                }
-            }
-            return sum;
         }
 
         public TreeNode GetSuccessor(TreeNode delNode)
