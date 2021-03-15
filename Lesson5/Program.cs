@@ -56,6 +56,18 @@ namespace Lesson5
                 validateBFS.ToArray();
             }
 
+            bool isEqualTestBBFS = Enumerable.SequenceEqual(standartBFS, validateBFS);
+
+            if (isEqualTestBBFS)
+            {
+                Console.WriteLine("Поиск в ширину(BFS) выполнен верно");
+            }
+            else
+            {
+                Console.WriteLine("Поиск в ширину(BFS) выполнен не верно");
+            }
+
+
             for (int i = 0; i < validateBFS.Length; i++)
             {
                 if (i == validateBFS.Length - 1)
@@ -78,8 +90,8 @@ namespace Lesson5
             listDFS.Add(Tuple.Create(49));
             listDFS.Add(Tuple.Create(58));
             listDFS.Add(Tuple.Create(55));
-            listDFS.Add(Tuple.Create(80));
             listDFS.Add(Tuple.Create(90));
+            listDFS.Add(Tuple.Create(80));
             listDFS.Add(Tuple.Create(95));
             standartDFS = listDFS.ToArray();
 
@@ -99,6 +111,17 @@ namespace Lesson5
                 listDFS.Add(Tuple.Create(value));
                 validateDFS[i] = new Tuple<int>(value);
                 validateDFS.ToArray();
+            }
+
+            bool isEqualTestDFS = Enumerable.SequenceEqual(standartDFS, validateDFS);
+
+            if (isEqualTestDFS)
+            {
+                Console.WriteLine("Поиск в ширину(DFS) выполнен верно");
+            }
+            else
+            {
+                Console.WriteLine("Поиск в ширину(DFS) выполнен не верно");
             }
 
             for (int i = 0; i < validateDFS.Length; i++)
